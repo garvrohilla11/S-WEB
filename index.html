@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brightpath Academy | Learning Today, Leading Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:#1e293b;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f1f5f9}::-webkit-scrollbar-thumb{background:#93c5fd;border-radius:3px}
+
+/* ── Utilities ── */
+.serif{font-family:'Playfair Display',Georgia,serif}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section{padding:80px 0}
+.section-light{background:#f8faff}
+.section-dark{background:linear-gradient(135deg,#0f2557 0%,#1e40af 60%,#1d4ed8 100%)}
+
+.eyebrow{display:block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#2563eb;margin-bottom:10px}
+.eyebrow-light{color:#93c5fd}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:#0f2557;line-height:1.2;margin-bottom:14px}
+.section-title-light{color:#fff}
+.section-subtitle{color:#64748b;font-size:1.05rem;max-width:580px;margin:0 auto}
+.section-subtitle-light{color:#bfdbfe}
+.text-center{text-align:center}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;padding:12px 24px;border-radius:10px;text-decoration:none;transition:all .25s ease;cursor:pointer;border:none}
+.btn-primary{background:#1d4ed8;color:#fff}
+.btn-primary:hover{background:#1e40af;transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,78,216,.28)}
+.btn-white{background:#fff;color:#1e3a8a}
+.btn-white:hover{background:#eff6ff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.btn-outline-white{background:transparent;color:#fff;border:2px solid #fff}
+.btn-outline-white:hover{background:#fff;color:#1e3a8a;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#1d4ed8;border:2px solid #1d4ed8}
+.btn-outline:hover{background:#1d4ed8;color:#fff;transform:translateY(-2px)}
+.btn-sm{padding:9px 18px;font-size:.82rem}
+
+/* ── Cards ── */
+.card{background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:transform .3s,box-shadow .3s;border:1px solid #f1f5f9}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.13)}
+
+/* ── TOP BAR ── */
+#topbar{background:#060f26;color:#cbd5e1;font-size:.78rem;padding:8px 0}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar-item{display:flex;align-items:center;gap:6px}
+.topbar-item a{color:#cbd5e1;text-decoration:none;transition:color .2s}
+.topbar-item a:hover{color:#93c5fd}
+
+/* ── NAVBAR ── */
+#navbar{background:rgba(255,255,255,.97);backdrop-filter:blur(8px);padding:14px 0;position:sticky;top:0;z-index:100;border-bottom:1px solid #f1f5f9;transition:box-shadow .3s,padding .3s}
+#navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.1);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 12px rgba(29,78,216,.3);transition:transform .2s}
+.nav-logo:hover .nav-logo-icon{transform:scale(1.05)}
+.nav-logo-text{line-height:1.2}
+.nav-logo-name{font-weight:700;color:#0f2557;font-size:1rem;font-family:'Playfair Display',serif}
+.nav-logo-tag{font-size:.72rem;color:#2563eb;font-weight:500}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{padding:8px 12px;border-radius:8px;font-size:.85rem;font-weight:500;color:#475569;text-decoration:none;transition:all .2s;position:relative}
+.nav-link:hover,.nav-link.active{color:#1d4ed8;background:#eff6ff}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px;color:#475569;transition:background .2s}
+.nav-hamburger:hover{background:#f1f5f9}
+.mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 20px 16px;border-top:1px solid #f1f5f9;background:#fff}
+.mobile-menu.open{display:flex}
+.mobile-link{padding:12px 16px;border-radius:10px;font-size:.9rem;font-weight:500;color:#374151;text-decoration:none;transition:all .2s}
+.mobile-link:hover,.mobile-link.active{background:#eff6ff;color:#1d4ed8}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=85');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,15,38,.92) 0%,rgba(15,37,87,.78) 55%,rgba(29,78,216,.45) 100%)}
+.hero-content{position:relative;max-width:660px;color:#fff;padding:60px 0}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:6px 16px;font-size:.78rem;font-weight:500;margin-bottom:22px;letter-spacing:.05em}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:16px;font-family:'Playfair Display',serif}
+.hero-title span{color:#f59e0b}
+.hero-tagline{font-size:1.25rem;color:#bfdbfe;font-style:italic;font-weight:300;margin-bottom:16px}
+.hero-desc{color:#94a3b8;font-size:1.05rem;line-height:1.7;margin-bottom:32px;max-width:540px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;color:rgba(255,255,255,.4);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.scroll-line{width:1px;height:28px;background:rgba(255,255,255,.3);animation:scrollDown 1.5s ease infinite}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── VISION MISSION ── */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vm-card-blue{background:linear-gradient(135deg,#0f2557,#1e40af);border-radius:24px;padding:44px;color:#fff;position:relative;overflow:hidden}
+.vm-card-blue:hover{transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.14);}
+.vm-card-white{background:#fff;border-radius:24px;padding:44px;box-shadow:0 4px 30px rgba(0,0,0,.09);border:1px solid #f1f5f9;position:relative;overflow:hidden}
+.vm-card-white:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.14)}
+.vm-blob{position:absolute;border-radius:50%;pointer-events:none}
+.vm-icon-box{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px}
+.vm-icon-blue{background:rgba(255,255,255,.15)}
+.vm-icon-white{background:#eff6ff}
+.vm-title{font-size:1.5rem;font-weight:700;margin-bottom:14px;font-family:'Playfair Display',serif}
+.vm-desc{font-size:.97rem;line-height:1.75;color:#bfdbfe}
+.vm-desc-dark{color:#64748b}
+.vm-divider{width:48px;height:4px;border-radius:2px;margin-top:22px}
+.vm-divider-amber{background:#f59e0b}
+.vm-divider-blue{background:#1d4ed8}
+
+/* ── WHY CHOOSE US ── */
+.wcu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.wcu-card{background:#fff;border-radius:18px;padding:30px;border:1px solid #f1f5f9;box-shadow:0 3px 18px rgba(0,0,0,.06);transition:all .3s}
+.wcu-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.12);border-color:#bfdbfe}
+.wcu-icon{width:48px;height:48px;background:#eff6ff;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;transition:background .3s}
+.wcu-card:hover .wcu-icon{background:#dbeafe}
+.wcu-card h3{font-size:1.05rem;font-weight:600;color:#0f2557;margin-bottom:8px;font-family:'Playfair Display',serif}
+.wcu-card p{font-size:.88rem;color:#64748b;line-height:1.65}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.stat-card{background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:32px 20px;text-align:center}
+.stat-num{font-size:3rem;font-weight:800;color:#fff;line-height:1;font-family:'Playfair Display',serif}
+.stat-label{font-size:.78rem;color:#bfdbfe;font-weight:500;text-transform:uppercase;letter-spacing:.1em;margin-top:8px}
+
+/* ── GALLERY PREVIEW ── */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+.gallery-item{border-radius:16px;overflow:hidden;position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:220px;object-fit:cover;transition:transform .5s ease;display:block}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item.large img{height:100%}
+.gallery-item.large{grid-row:span 2}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,37,87,.75),transparent);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-tag{background:rgba(29,78,216,.8);color:#fff;font-size:.75rem;font-weight:500;padding:4px 12px;border-radius:100px}
+
+/* ── ADMISSIONS CTA ── */
+.cta-box{background:linear-gradient(135deg,#0f2557 0%,#1e40af 60%,#1d4ed8 100%);border-radius:28px;padding:60px 50px;position:relative;overflow:hidden}
+.cta-blob{position:absolute;border-radius:50%;pointer-events:none}
+.cta-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:30px;position:relative}
+.cta-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.3);border-radius:100px;padding:5px 14px;font-size:.75rem;font-weight:600;color:#fbbf24;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.cta-title{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;color:#fff;margin-bottom:10px;font-family:'Playfair Display',serif}
+.cta-desc{color:#bfdbfe;font-size:.97rem;max-width:480px}
+.cta-actions{display:flex;gap:14px;flex-shrink:0;flex-wrap:wrap}
+
+/* ── PAGE HERO ── */
+.page-hero{padding:90px 0 80px;background:linear-gradient(135deg,#0f2557,#1e40af);position:relative;overflow:hidden}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.page-hero-overlay{position:absolute;inset:0;background:rgba(10,26,62,.75)}
+.page-hero-content{position:relative;text-align:center;color:#fff}
+.page-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:12px;font-family:'Playfair Display',serif}
+.page-hero p{font-size:1.1rem;color:#bfdbfe;max-width:500px;margin:0 auto 18px}
+.page-hero-divider{width:56px;height:4px;background:#f59e0b;border-radius:2px;margin:0 auto}
+
+/* ── ABOUT PAGE ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{border-radius:24px;overflow:hidden;box-shadow:0 12px 50px rgba(0,0,0,.15)}
+.about-img img{width:100%;height:460px;object-fit:cover;transition:transform .5s}
+.about-img:hover img{transform:scale(1.04)}
+.about-stats-mini{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.mini-stat{background:#eff6ff;border-radius:14px;padding:16px}
+.mini-stat-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#2563eb;margin-bottom:4px}
+.mini-stat-val{font-size:1.2rem;font-weight:700;color:#0f2557;font-family:'Playfair Display',serif}
+
+/* ── ACADEMICS ── */
+.class-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.class-card{background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:32px;text-align:center;transition:all .3s;box-shadow:0 3px 16px rgba(0,0,0,.06)}
+.class-card:hover{transform:translateY(-4px);border-color:#bfdbfe;box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.class-num{width:60px;height:60px;background:#eff6ff;border-radius:16px;font-size:1.5rem;font-weight:800;color:#1d4ed8;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Playfair Display',serif;transition:background .3s}
+.class-card:hover .class-num{background:#dbeafe}
+
+/* ── FACULTY ── */
+.faculty-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.faculty-card{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #f1f5f9;box-shadow:0 3px 18px rgba(0,0,0,.06);transition:all .3s}
+.faculty-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.12)}
+.faculty-img{overflow:hidden;height:220px}
+.faculty-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.faculty-card:hover .faculty-img img{transform:scale(1.06)}
+.faculty-info{padding:18px 20px}
+.faculty-name{font-weight:700;color:#0f2557;font-size:.98rem;font-family:'Playfair Display',serif}
+.faculty-role{color:#2563eb;font-size:.82rem;font-weight:500;margin-bottom:10px}
+.faculty-meta{display:flex;flex-direction:column;gap:5px;padding-top:10px;border-top:1px solid #f1f5f9}
+.faculty-meta-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;color:#64748b}
+
+/* ── GALLERY FULL ── */
+.filter-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px}
+.filter-btn{padding:8px 18px;border-radius:100px;font-size:.82rem;font-weight:500;border:none;cursor:pointer;transition:all .25s;background:#f1f5f9;color:#475569}
+.filter-btn:hover,.filter-btn.active{background:#1d4ed8;color:#fff;box-shadow:0 4px 14px rgba(29,78,216,.3)}
+.gallery-full-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.gallery-full-item{border-radius:14px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;position:relative}
+.gallery-full-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-full-item:hover img{transform:scale(1.08)}
+.gallery-full-overlay{position:absolute;inset:0;background:rgba(10,26,62,.6);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px}
+.gallery-full-item:hover .gallery-full-overlay{opacity:1}
+.gallery-full-overlay p{color:#fff;font-size:.85rem;font-weight:500;text-align:center}
+.gallery-full-overlay span{background:rgba(29,78,216,.8);color:#fff;font-size:.72rem;padding:3px 10px;border-radius:100px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.lightbox-img{max-width:900px;width:100%;border-radius:16px}
+.lightbox-close{position:fixed;top:16px;right:16px;width:40px;height:40px;background:rgba(255,255,255,.15);border:none;border-radius:10px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lightbox-close:hover{background:rgba(255,255,255,.25)}
+
+/* ── ADMISSIONS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.step-card{background:#fff;border-radius:18px;padding:28px;text-align:center;border:1px solid #e2e8f0;box-shadow:0 3px 16px rgba(0,0,0,.06);transition:all .3s}
+.step-card:hover{transform:translateY(-4px);border-color:#bfdbfe;box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.step-num{width:60px;height:60px;background:#1d4ed8;border-radius:16px;font-size:1.2rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Playfair Display',serif;box-shadow:0 4px 16px rgba(29,78,216,.3)}
+.docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.docs-card,.age-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.07);border:1px solid #f1f5f9}
+.age-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #f1f5f9;font-size:.88rem}
+.age-row:last-child{border:none}
+.age-badge{background:#eff6ff;color:#1d4ed8;font-size:.78rem;font-weight:600;padding:4px 12px;border-radius:100px}
+.doc-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:.88rem;color:#374151}
+.check-icon{color:#2563eb;font-size:14px;flex-shrink:0;margin-top:2px}
+.enquiry-form{background:#f8faff;border-radius:24px;padding:40px;border:1px solid #e2e8f0}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-size:.84rem;font-weight:500;color:#374151}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1px solid #e2e8f0;border-radius:12px;font-size:.9rem;font-family:inherit;transition:all .2s;background:#fff;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+
+/* ── CONTACT ── */
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:60px}
+.contact-card{background:#fff;border-radius:18px;padding:26px;border:1px solid #f1f5f9;box-shadow:0 3px 16px rgba(0,0,0,.06);transition:all .3s;text-decoration:none;display:block}
+.contact-card:hover{transform:translateY(-4px);border-color:#bfdbfe;box-shadow:0 10px 32px rgba(0,0,0,.1)}
+.contact-icon{width:46px;height:46px;background:#eff6ff;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;transition:background .3s}
+.contact-card:hover .contact-icon{background:#dbeafe}
+.contact-form-grid{display:grid;grid-template-columns:3fr 2fr;gap:28px;align-items:start}
+.map-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #f1f5f9}
+.map-card iframe{display:block}
+
+/* ── FOOTER ── */
+#footer{background:#060f26;color:#94a3b8}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr 1.5fr;gap:48px;padding:64px 0 48px}
+.footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;text-decoration:none}
+.footer-logo-icon{width:40px;height:40px;background:#1d4ed8;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.footer-logo-name{font-weight:700;color:#fff;font-family:'Playfair Display',serif;font-size:1rem}
+.footer-desc{font-size:.85rem;line-height:1.7;color:#64748b;margin-bottom:20px}
+.social-links{display:flex;gap:10px}
+.social-btn{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#94a3b8;text-decoration:none;transition:all .25s}
+.social-btn:hover{background:#1d4ed8;color:#fff}
+.footer-heading{color:#fff;font-weight:600;font-size:.95rem;margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{color:#64748b;text-decoration:none;font-size:.85rem;display:flex;align-items:center;gap:5px;transition:color .2s}
+.footer-links a:hover{color:#93c5fd}
+.footer-contact-item{display:flex;gap:10px;margin-bottom:14px;font-size:.85rem;color:#64748b;align-items:flex-start}
+.footer-contact-icon{color:#3b82f6;flex-shrink:0;margin-top:1px}
+.footer-map{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding:18px 0;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:#475569}
+
+/* ── Animations ── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s,transform .65s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .vm-grid,.about-grid,.docs-grid,.contact-form-grid{grid-template-columns:1fr}
+  .class-cards{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item.large{grid-row:span 1}
+  .gallery-item.large img,.gallery-item img{height:180px}
+  .cta-box{padding:40px 28px}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-hamburger{display:flex;align-items:center}
+  .btn.nav-cta{display:none}
+  .section{padding:56px 0}
+  .gallery-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .gallery-full-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  #topbar .topbar-inner span.topbar-timings{display:none}
+}
+
+/* ══════════ MOBILE RESPONSIVENESS FIXES ══════════ */
+
+/* Prevent any horizontal overflow site-wide */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ── HERO: fix height + spacing so content never collides with scroll indicator ── */
+@media(max-width:768px){
+  #hero{
+    min-height: 100vh;
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 90px;
+    align-items: flex-start;
+  }
+  .hero-content{
+    padding: 24px 0 16px;
+    max-width: 100%;
+  }
+  .hero-title{
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+    line-height: 1.18;
+  }
+  .hero-tagline{
+    font-size: 1.05rem;
+  }
+  .hero-desc{
+    font-size: .95rem;
+    max-width: 100%;
+  }
+  .hero-badge{
+    font-size: .7rem;
+    padding: 5px 12px;
+  }
+}
+
+/* ── Hide hero scroll indicator below 768px (tablets/desktop keep it) ── */
+@media(max-width:767px){
+  .hero-scroll{
+    display: none !important;
+  }
+}
+
+/* ── General mobile layout fixes ── */
+@media(max-width:640px){
+  .hero-btns{
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+  }
+  .hero-btns .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-title{
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+  .section-subtitle{
+    font-size: .92rem;
+    padding: 0 8px;
+  }
+  .eyebrow{
+    font-size: .68rem;
+  }
+
+  .vm-card-blue, .vm-card-white{
+    padding: 28px 22px;
+  }
+  .wcu-card, .step-card, .class-card, .docs-card, .age-card, .contact-card{
+    padding: 22px 18px;
+  }
+  .cta-box{
+    padding: 32px 20px;
+  }
+  .cta-inner{
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .cta-actions{
+    width: 100%;
+  }
+  .cta-actions .btn{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-hero{
+    padding: 70px 0 56px;
+  }
+  .page-hero p{
+    padding: 0 12px;
+  }
+
+  .form-row{
+    grid-template-columns: 1fr;
+  }
+  .enquiry-form{
+    padding: 26px 20px;
+  }
+
+  .about-grid, .docs-grid, .contact-form-grid{
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about-img img{
+    height: 280px;
+  }
+
+  .faculty-grid{
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  }
+
+  .footer-grid{
+    padding: 48px 0 36px;
+  }
+  .footer-bottom{
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .card[style*="max-width:860px"] > div{
+    flex-direction: column;
+    align-items: center !important;
+    text-align: center;
+  }
+}
+
+/* ── Extra-small phones ── */
+@media(max-width:380px){
+  .container{ padding: 0 16px; }
+  .hero-title{ font-size: 1.7rem; }
+  .cta-title{ font-size: 1.3rem; }
+  .nav-logo-tag{ display:none; }
+}
+
+/* ── Reduced motion: respect user preference ── */
+@media (prefers-reduced-motion: reduce){
+  .fade-up, .scroll-line, .hero-badge-dot{
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ TOP BAR ══════════ -->
+<div id="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div style="display:flex;gap:22px;flex-wrap:wrap">
+        <div class="topbar-item"><span>📞</span><a href="tel:+919876543210">+91 98765 43210</a></div>
+        <div class="topbar-item"><span>✉</span><a href="mailto:info@brightpathacademy.edu.in">info@brightpathacademy.edu.in</a></div>
+      </div>
+      <div class="topbar-item topbar-timings"><span>🕒</span><span>Mon–Sat: 8:00 AM – 2:30 PM</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<div id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" onclick="showPage('home',this);return false">
+        <div class="nav-logo-icon">🎓</div>
+        <div class="nav-logo-text">
+          <div class="nav-logo-name">Brightpath Academy</div>
+          <div class="nav-logo-tag">Learning Today, Leading Tomorrow</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-page="home"   onclick="showPage('home',this);return false">Home</a>
+        <a href="#" class="nav-link" data-page="about"         onclick="showPage('about',this);return false">About Us</a>
+        <a href="#" class="nav-link" data-page="infrastructure" onclick="showPage('infrastructure',this);return false">Infrastructure</a>
+        <a href="#" class="nav-link" data-page="academics"     onclick="showPage('academics',this);return false">Academics</a>
+        <a href="#" class="nav-link" data-page="gallery"       onclick="showPage('gallery',this);return false">Gallery</a>
+        <a href="#" class="nav-link" data-page="admissions"    onclick="showPage('admissions',this);return false">Admissions</a>
+        <a href="#" class="nav-link" data-page="faculty"       onclick="showPage('faculty',this);return false">Faculty</a>
+        <a href="#" class="nav-link" data-page="contact"       onclick="showPage('contact',this);return false">Contact Us</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="#" class="btn btn-primary btn-sm nav-cta" onclick="showPage('admissions',null);return false">Admissions Open</a>
+        <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="container" style="display:flex;flex-direction:column;gap:4px">
+      <a href="#" class="mobile-link active" onclick="showPage('home',this);toggleMenu();return false">Home</a>
+      <a href="#" class="mobile-link" onclick="showPage('about',this);toggleMenu();return false">About Us</a>
+      <a href="#" class="mobile-link" onclick="showPage('infrastructure',this);toggleMenu();return false">Infrastructure</a>
+      <a href="#" class="mobile-link" onclick="showPage('academics',this);toggleMenu();return false">Academics</a>
+      <a href="#" class="mobile-link" onclick="showPage('gallery',this);toggleMenu();return false">Gallery</a>
+      <a href="#" class="mobile-link" onclick="showPage('admissions',this);toggleMenu();return false">Admissions</a>
+      <a href="#" class="mobile-link" onclick="showPage('faculty',this);toggleMenu();return false">Faculty</a>
+      <a href="#" class="mobile-link" onclick="showPage('contact',this);toggleMenu();return false">Contact Us</a>
+      <a href="#" class="btn btn-primary" style="margin-top:8px;justify-content:center" onclick="showPage('admissions',null);toggleMenu();return false">Admissions Open</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PAGES ══════════ -->
+<div id="page-home">
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Admissions Open · Session 2026–27
+      </div>
+      <h1 class="hero-title serif">Welcome to<br><span>Brightpath Academy</span></h1>
+      <p class="hero-tagline">"Learning Today, Leading Tomorrow"</p>
+      <p class="hero-desc">A premier CBSE school for Nursery to Class VIII, where young minds are inspired to learn with curiosity, grow with confidence and lead with character.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn btn-white" onclick="showPage('admissions',null);return false">📖 Admissions Open</a>
+        <a href="#" class="btn btn-outline-white" onclick="showPage('about',null);return false">Explore More →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- VISION & MISSION -->
+<section class="section section-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="eyebrow">Our Foundation</span>
+      <h2 class="section-title serif">Vision &amp; Mission</h2>
+      <p class="section-subtitle">The values and purpose that guide everything we do at Brightpath Academy.</p>
+    </div>
+    <div class="vm-grid fade-up">
+      <div class="vm-card-blue">
+        <div class="vm-blob" style="width:120px;height:120px;background:rgba(255,255,255,.05);top:-30px;right:-30px"></div>
+        <div class="vm-blob" style="width:160px;height:160px;background:rgba(255,255,255,.04);bottom:-50px;left:-50px"></div>
+        <div class="vm-icon-box vm-icon-blue">👁</div>
+        <h3 class="vm-title serif" style="color:#fff">Our Vision</h3>
+        <p class="vm-desc">To be a beacon of excellence in early and middle school education — cultivating inquisitive, compassionate and globally aware young citizens who are prepared to lead with integrity in an ever-changing world.</p>
+        <div class="vm-divider vm-divider-amber"></div>
+      </div>
+      <div class="vm-card-white">
+        <div class="vm-blob" style="width:120px;height:120px;background:#eff6ff;top:-30px;right:-30px;z-index:0"></div>
+        <div class="vm-icon-box vm-icon-white" style="position:relative;z-index:1">🎯</div>
+        <h3 class="vm-title serif" style="color:#0f2557;position:relative;z-index:1">Our Mission</h3>
+        <p class="vm-desc-dark" style="position:relative;z-index:1">To provide a nurturing, inclusive and intellectually stimulating environment where every child's unique potential is recognised and celebrated — through innovative teaching, strong values and meaningful partnerships with families.</p>
+        <div class="vm-divider vm-divider-blue" style="position:relative;z-index:1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="eyebrow">Why Brightpath</span>
+      <h2 class="section-title serif">Why Choose Us?</h2>
+      <p class="section-subtitle">We combine academic rigour with nurturing care — giving your child the best possible start.</p>
+    </div>
+    <div class="wcu-grid fade-up">
+      <div class="wcu-card"><div class="wcu-icon">🎓</div><h3>Experienced Faculty</h3><p>Our team of qualified educators brings decades of combined teaching excellence and a genuine passion for student success.</p></div>
+      <div class="wcu-card"><div class="wcu-icon">🛡</div><h3>Safe &amp; Secure Campus</h3><p>24/7 CCTV surveillance, trained security staff, and child-safe infrastructure ensure every child's well-being.</p></div>
+      <div class="wcu-card"><div class="wcu-icon">💻</div><h3>Smart Classrooms</h3><p>Interactive digital boards, projectors and modern technology make learning engaging and effective for every learner.</p></div>
+      <div class="wcu-card"><div class="wcu-icon">👤</div><h3>Individual Attention</h3><p>Low student-to-teacher ratios mean every child's progress is closely monitored, nurtured and celebrated.</p></div>
+      <div class="wcu-card"><div class="wcu-icon">🌱</div><h3>Holistic Development</h3><p>Beyond academics, we cultivate creativity, critical thinking, empathy, and leadership from an early age.</p></div>
+      <div class="wcu-card"><div class="wcu-icon">🎵</div><h3>Co-curricular Activities</h3><p>Sports, music, art, drama and clubs give children a vibrant space to explore their passions and build confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:44px">
+      <span class="eyebrow eyebrow-light">By The Numbers</span>
+      <h2 class="section-title serif section-title-light">Brightpath at a Glance</h2>
+    </div>
+    <div class="stats-grid fade-up">
+      <div class="stat-card"><div class="stat-num" id="stat0">0+</div><div class="stat-label">Students Enrolled</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat1">0+</div><div class="stat-label">Experienced Teachers</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat2">0</div><div class="stat-label">Modern Classrooms</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat3">0%</div><div class="stat-label">Parent Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section class="section section-light">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:44px">
+      <span class="eyebrow">Campus Life</span>
+      <h2 class="section-title serif">Life at Brightpath</h2>
+      <p class="section-subtitle">A glimpse into the vibrant, enriching life our students enjoy every day.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item large" style="grid-row:span 2">
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Students in classroom" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-tag">Academics</span></div>
+      </div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="School building" loading="lazy"><div class="gallery-overlay"><span class="gallery-tag">Campus</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Library" loading="lazy"><div class="gallery-overlay"><span class="gallery-tag">Infrastructure</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&q=80" alt="Sports" loading="lazy"><div class="gallery-overlay"><span class="gallery-tag">Sports</span></div></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Events" loading="lazy"><div class="gallery-overlay"><span class="gallery-tag">Events</span></div></div>
+    </div>
+    <div class="text-center" style="margin-top:10px">
+      <a href="#" class="btn btn-primary" onclick="showPage('gallery',null);return false">View Full Gallery →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box fade-up">
+      <div class="cta-blob" style="width:240px;height:240px;background:rgba(255,255,255,.05);top:-60px;right:-60px"></div>
+      <div class="cta-blob" style="width:180px;height:180px;background:rgba(245,158,11,.08);bottom:-40px;left:-40px"></div>
+      <div class="cta-inner">
+        <div>
+          <div class="cta-badge">✨ Now Enrolling</div>
+          <h2 class="cta-title serif">Admissions Open for<br>Session 2026–27</h2>
+          <p class="cta-desc">Secure your child's seat at Brightpath Academy today. Limited seats available for Nursery through Class VIII.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-white" onclick="showPage('admissions',null);return false">Apply Now →</a>
+          <a href="#" class="btn btn-outline-white" onclick="showPage('contact',null);return false">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home -->
+
+<!-- ══════════ ABOUT PAGE ══════════ -->
+<div id="page-about" style="display:none">
+  <div class="page-hero" style="background-image:none">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <h1>About Us</h1>
+      <p>Discover the story, values and people behind Brightpath Academy.</p>
+      <div class="page-hero-divider"></div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div>
+          <span class="eyebrow">Our Story</span>
+          <h2 class="section-title serif">A School Born from a Community's Dream</h2>
+          <p style="color:#475569;line-height:1.8;margin-bottom:14px">Brightpath Academy was established in 2018 with a clear purpose: to create a school that families in the neighbourhood could truly trust — one that combines rigorous academics with genuine warmth, where children are known by name and celebrated as individuals.</p>
+          <p style="color:#475569;line-height:1.8;margin-bottom:14px">From a modest beginning of 60 students, we have grown to serve over 400 young learners from Nursery to Class VIII. Every decision we make is guided by one simple question: <em>what is best for the child?</em></p>
+          <p style="color:#475569;line-height:1.8">We are affiliated with the Central Board of Secondary Education (CBSE) and committed to the National Curriculum Framework, delivered through innovative, child-centred teaching methods.</p>
+          <div class="about-stats-mini">
+            <div class="mini-stat"><div class="mini-stat-label">Established</div><div class="mini-stat-val serif">2018</div></div>
+            <div class="mini-stat"><div class="mini-stat-label">CBSE Affiliation</div><div class="mini-stat-val serif">No. 2730451</div></div>
+            <div class="mini-stat"><div class="mini-stat-label">Classes Offered</div><div class="mini-stat-val serif">Nursery – VIII</div></div>
+            <div class="mini-stat"><div class="mini-stat-label">Medium</div><div class="mini-stat-val serif">English</div></div>
+          </div>
+        </div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Brightpath Academy" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-light">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px"><span class="eyebrow">From The Principal</span><h2 class="section-title serif">A Message of Welcome</h2></div>
+      <div class="card fade-up" style="max-width:860px;margin:0 auto;padding:44px">
+        <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex-shrink:0;text-align:center">
+            <div style="width:100px;height:100px;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.12)"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&q=80" alt="Principal" style="width:100%;height:100%;object-fit:cover;object-position:top"></div>
+            <p style="font-weight:600;color:#0f2557;font-size:.88rem;margin-top:10px">Mrs. Priya Sharma</p>
+            <p style="color:#2563eb;font-size:.78rem">Principal</p>
+          </div>
+          <blockquote style="flex:1;font-style:italic;color:#475569;line-height:1.8;font-size:1.02rem">
+            <span style="font-size:4rem;color:#dbeafe;line-height:0.8;display:block;margin-bottom:-10px;font-family:'Playfair Display',serif">"</span>
+            At Brightpath Academy, we believe that education is not merely the transfer of knowledge — it is the awakening of curiosity, the building of character, and the discovery of one's own unique potential. Every child who walks through our doors carries within them an extraordinary capacity to learn and to lead. Our commitment to you, as parents, is that we will see, nurture and celebrate that potential every single day. Welcome to our family.
+            <span style="font-size:4rem;color:#dbeafe;line-height:0.8;display:block;text-align:right;margin-top:-10px;font-family:'Playfair Display',serif">"</span>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:44px"><span class="eyebrow">What We Stand For</span><h2 class="section-title serif">Our Core Values</h2></div>
+      <div class="wcu-grid fade-up">
+        <div class="wcu-card"><div class="wcu-icon">🏆</div><h3>Academic Excellence</h3><p>We set high standards and support every child in achieving their personal best through rigorous, nurturing education.</p></div>
+        <div class="wcu-card"><div class="wcu-icon">❤</div><h3>Compassion &amp; Care</h3><p>A warm, empathetic environment where every student feels valued, understood and truly belonging.</p></div>
+        <div class="wcu-card"><div class="wcu-icon">🤝</div><h3>Inclusive Community</h3><p>We celebrate diversity and ensure every child, regardless of background, finds their place and voice.</p></div>
+        <div class="wcu-card"><div class="wcu-icon">✅</div><h3>Integrity &amp; Honesty</h3><p>Ethical conduct, honesty and respect are the cornerstones of our school culture, modelled by all adults.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ INFRASTRUCTURE PAGE ══════════ -->
+<div id="page-infrastructure" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content"><h1>Infrastructure</h1><p>World-class facilities designed to inspire learning, creativity and well-being.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:60px">
+        <span class="eyebrow">Built for Learning</span>
+        <h2 class="section-title serif">Spaces That Inspire</h2>
+        <p class="section-subtitle">Every space — from classrooms to corridors — reflects our commitment to quality education and child well-being.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:70px">
+        <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div><div style="width:56px;height:56px;background:#eff6ff;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px">📚</div><h3 class="serif" style="font-size:1.8rem;font-weight:700;color:#0f2557;margin-bottom:12px">Well-Stocked Library</h3><p style="color:#64748b;line-height:1.8">Over 5,000 books, periodicals, e-resources and a quiet reading corner for curious minds. Our librarian curates age-appropriate collections for every level and hosts weekly read-aloud sessions.</p><div style="width:48px;height:4px;background:#1d4ed8;border-radius:2px;margin-top:20px"></div></div>
+          <div class="about-img"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80" alt="Library" style="width:100%;height:300px;object-fit:cover" loading="lazy"></div>
+        </div>
+        <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div class="about-img" style="order:1"><img src="https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?w=800&q=80" alt="Computer Lab" style="width:100%;height:300px;object-fit:cover" loading="lazy"></div>
+          <div style="order:2"><div style="width:56px;height:56px;background:#eff6ff;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px">💻</div><h3 class="serif" style="font-size:1.8rem;font-weight:700;color:#0f2557;margin-bottom:12px">Computer Laboratory</h3><p style="color:#64748b;line-height:1.8">40-seat air-conditioned computer lab with latest systems and high-speed internet for digital learning, coding classes and research projects from Class III onwards.</p><div style="width:48px;height:4px;background:#1d4ed8;border-radius:2px;margin-top:20px"></div></div>
+        </div>
+        <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div><div style="width:56px;height:56px;background:#eff6ff;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px">🔬</div><h3 class="serif" style="font-size:1.8rem;font-weight:700;color:#0f2557;margin-bottom:12px">Science Laboratory</h3><p style="color:#64748b;line-height:1.8">Fully equipped physics, chemistry and biology labs enabling hands-on scientific exploration. Children learn by doing — experiments, observations and the joy of discovery.</p><div style="width:48px;height:4px;background:#1d4ed8;border-radius:2px;margin-top:20px"></div></div>
+          <div class="about-img"><img src="https://images.unsplash.com/photo-1627556704302-624286467c65?w=800&q=80" alt="Science Lab" style="width:100%;height:300px;object-fit:cover" loading="lazy"></div>
+        </div>
+        <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+          <div class="about-img" style="order:1"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80" alt="Sports Ground" style="width:100%;height:300px;object-fit:cover" loading="lazy"></div>
+          <div style="order:2"><div style="width:56px;height:56px;background:#eff6ff;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px">⚽</div><h3 class="serif" style="font-size:1.8rem;font-weight:700;color:#0f2557;margin-bottom:12px">Sports Ground</h3><p style="color:#64748b;line-height:1.8">Large multi-sport ground for cricket, football, athletics and annual sports day events. Physical fitness, teamwork and sportsmanship are core to our holistic development philosophy.</p><div style="width:48px;height:4px;background:#1d4ed8;border-radius:2px;margin-top:20px"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="container text-center">
+      <span class="eyebrow eyebrow-light">Safety First</span>
+      <h2 class="section-title serif section-title-light" style="margin-bottom:16px">A Campus You Can Trust</h2>
+      <p class="section-subtitle-light" style="max-width:600px;margin:0 auto;line-height:1.8">Brightpath Academy is equipped with 24/7 CCTV surveillance across all areas, trained and verified security personnel, RFID-enabled entry gates, and a dedicated first-aid room staffed by a qualified nurse. Your child's safety is our highest priority.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ ACADEMICS PAGE ══════════ -->
+<div id="page-academics" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content"><h1>Academics</h1><p>A rich, well-rounded curriculum designed to challenge, inspire and nurture every learner.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:44px"><span class="eyebrow">Academic Structure</span><h2 class="section-title serif">Classes We Offer</h2><p class="section-subtitle">From first steps in Pre-Primary to confident Middle School graduates.</p></div>
+      <div class="class-cards fade-up">
+        <div class="class-card"><div class="class-num serif">1</div><h3 class="serif" style="color:#0f2557;font-size:1.2rem;font-weight:700;margin-bottom:6px">Pre-Primary</h3><p style="color:#2563eb;font-size:.85rem;font-weight:600;margin-bottom:10px">Nursery, LKG &amp; UKG</p><p style="color:#64748b;font-size:.88rem;line-height:1.65">Play-based early childhood learning focused on social skills, language development and love of learning.</p></div>
+        <div class="class-card"><div class="class-num serif">2</div><h3 class="serif" style="color:#0f2557;font-size:1.2rem;font-weight:700;margin-bottom:6px">Primary</h3><p style="color:#2563eb;font-size:.85rem;font-weight:600;margin-bottom:10px">Class I – V</p><p style="color:#64748b;font-size:.88rem;line-height:1.65">Foundation in literacy, numeracy and values with an activity-based, inquiry-led approach.</p></div>
+        <div class="class-card"><div class="class-num serif">3</div><h3 class="serif" style="color:#0f2557;font-size:1.2rem;font-weight:700;margin-bottom:6px">Middle School</h3><p style="color:#2563eb;font-size:.85rem;font-weight:600;margin-bottom:10px">Class VI – VIII</p><p style="color:#64748b;font-size:.88rem;line-height:1.65">Subject specialisation and critical thinking with project-based learning and leadership opportunities.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-light">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div>
+          <span class="eyebrow">What We Teach</span>
+          <h2 class="section-title serif">Curriculum Highlights</h2>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px">
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> CBSE Affiliated Curriculum</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> English as primary medium of instruction</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Hindi as compulsory second language</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Mathematics &amp; Sciences with practical emphasis</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Social Studies, Arts, Music &amp; Physical Education</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Computer Science from Class III onwards</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Value Education &amp; Life Skills</li>
+            <li style="display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:#374151"><span style="color:#2563eb;font-size:16px;flex-shrink:0;margin-top:1px">✓</span> Environmental Awareness Programme</li>
+          </ul>
+        </div>
+        <div class="about-img"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Classroom" style="height:380px;object-fit:cover;width:100%" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px"><span class="eyebrow eyebrow-light">Beyond the Classroom</span><h2 class="section-title serif section-title-light">Co-curricular Activities</h2></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px" class="fade-up">
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🔬</div><p style="color:#fff;font-size:.88rem;font-weight:500">Annual Science Fair</p></div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🏆</div><p style="color:#fff;font-size:.88rem;font-weight:500">Interschool Olympiads</p></div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🎤</div><p style="color:#fff;font-size:.88rem;font-weight:500">Debate &amp; Elocution</p></div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🎨</div><p style="color:#fff;font-size:.88rem;font-weight:500">Art &amp; Craft Exhibition</p></div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🏅</div><p style="color:#fff;font-size:.88rem;font-weight:500">Sports Meet</p></div>
+        <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:22px;text-align:center"><div style="font-size:24px;margin-bottom:10px">🎭</div><p style="color:#fff;font-size:.88rem;font-weight:500">Cultural Performances</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ GALLERY PAGE ══════════ -->
+<div id="page-gallery" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content"><h1>Gallery</h1><p>A window into the vibrant life and learning at Brightpath Academy.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:40px"><span class="eyebrow">Campus Life</span><h2 class="section-title serif">Moments We Cherish</h2><p class="section-subtitle">Browse through our collection of everyday moments, events and achievements.</p></div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" onclick="filterGallery('all',this)">All</button>
+        <button class="filter-btn" onclick="filterGallery('academics',this)">Academics</button>
+        <button class="filter-btn" onclick="filterGallery('campus',this)">Campus</button>
+        <button class="filter-btn" onclick="filterGallery('infrastructure',this)">Infrastructure</button>
+        <button class="filter-btn" onclick="filterGallery('sports',this)">Sports</button>
+        <button class="filter-btn" onclick="filterGallery('events',this)">Events</button>
+        <button class="filter-btn" onclick="filterGallery('arts',this)">Arts</button>
+      </div>
+      <div class="gallery-full-grid" id="galleryGrid">
+        <div class="gallery-full-item" data-cat="academics"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="Classroom" loading="lazy"><div class="gallery-full-overlay"><p>Students in Classroom</p><span>Academics</span></div></div>
+        <div class="gallery-full-item" data-cat="campus"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Building" loading="lazy"><div class="gallery-full-overlay"><p>School Building</p><span>Campus</span></div></div>
+        <div class="gallery-full-item" data-cat="infrastructure"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Library" loading="lazy"><div class="gallery-full-overlay"><p>Library</p><span>Infrastructure</span></div></div>
+        <div class="gallery-full-item" data-cat="sports"><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&q=80" alt="Sports" loading="lazy"><div class="gallery-full-overlay"><p>Sports Day</p><span>Sports</span></div></div>
+        <div class="gallery-full-item" data-cat="events"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Annual Day" loading="lazy"><div class="gallery-full-overlay"><p>Annual Day Performance</p><span>Events</span></div></div>
+        <div class="gallery-full-item" data-cat="arts"><img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80" alt="Art Class" loading="lazy"><div class="gallery-full-overlay"><p>Art &amp; Creativity</p><span>Arts</span></div></div>
+        <div class="gallery-full-item" data-cat="infrastructure"><img src="https://images.unsplash.com/photo-1627556704302-624286467c65?w=600&q=80" alt="Science Lab" loading="lazy"><div class="gallery-full-overlay"><p>Science Laboratory</p><span>Infrastructure</span></div></div>
+        <div class="gallery-full-item" data-cat="infrastructure"><img src="https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?w=600&q=80" alt="Computer Lab" loading="lazy"><div class="gallery-full-overlay"><p>Computer Lab</p><span>Infrastructure</span></div></div>
+        <div class="gallery-full-item" data-cat="events"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="School Event" loading="lazy"><div class="gallery-full-overlay"><p>School Event</p><span>Events</span></div></div>
+        <div class="gallery-full-item" data-cat="sports"><img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=80" alt="Children Playing" loading="lazy"><div class="gallery-full-overlay"><p>Outdoor Play</p><span>Sports</span></div></div>
+        <div class="gallery-full-item" data-cat="sports"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="Outdoor Activity" loading="lazy"><div class="gallery-full-overlay"><p>Outdoor Activity</p><span>Sports</span></div></div>
+        <div class="gallery-full-item" data-cat="events"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Ceremony" loading="lazy"><div class="gallery-full-overlay"><p>Prize Distribution</p><span>Events</span></div></div>
+      </div>
+    </div>
+  </section>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" style="display:none" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+</div>
+
+<!-- ══════════ ADMISSIONS PAGE ══════════ -->
+<div id="page-admissions" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content"><h1>Admissions</h1><p>Admissions are open for Session 2026–27. Secure your child's future with us.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <div style="background:#eff6ff;border-top:1px solid #bfdbfe;border-bottom:1px solid #bfdbfe;padding:18px 0">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div><h3 class="serif" style="color:#0f2557;font-size:1.1rem;font-weight:700">Admissions Open — Session 2026–27</h3><p style="color:#64748b;font-size:.88rem;margin-top:2px">Classes: Nursery, LKG, UKG and Class I–VIII · Limited Seats Available</p></div>
+      <a href="#enquiry" class="btn btn-primary btn-sm">📝 Enquire Now</a>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:44px"><span class="eyebrow">How to Apply</span><h2 class="section-title serif">Admission Process</h2><p class="section-subtitle">A simple, transparent four-step process to join the Brightpath family.</p></div>
+      <div class="steps-grid fade-up">
+        <div class="step-card"><div class="step-num serif">01</div><h3 class="serif" style="color:#0f2557;font-size:1.05rem;font-weight:700;margin-bottom:8px">Download Prospectus</h3><p style="color:#64748b;font-size:.88rem;line-height:1.65">Collect or download the admission form and prospectus from the school office or this website.</p></div>
+        <div class="step-card"><div class="step-num serif">02</div><h3 class="serif" style="color:#0f2557;font-size:1.05rem;font-weight:700;margin-bottom:8px">Submit Application</h3><p style="color:#64748b;font-size:.88rem;line-height:1.65">Fill the form completely and submit along with required documents at the admissions office.</p></div>
+        <div class="step-card"><div class="step-num serif">03</div><h3 class="serif" style="color:#0f2557;font-size:1.05rem;font-weight:700;margin-bottom:8px">Interaction Round</h3><p style="color:#64748b;font-size:.88rem;line-height:1.65">Attend the scheduled interaction session for the child and parent with our admissions team.</p></div>
+        <div class="step-card"><div class="step-num serif">04</div><h3 class="serif" style="color:#0f2557;font-size:1.05rem;font-weight:700;margin-bottom:8px">Confirmation</h3><p style="color:#64748b;font-size:.88rem;line-height:1.65">Receive your admission confirmation letter and complete the fee payment to secure the seat.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-light">
+    <div class="container">
+      <div class="docs-grid fade-up">
+        <div class="age-card">
+          <h3 class="serif" style="color:#0f2557;font-size:1.15rem;font-weight:700;margin-bottom:20px">Age Eligibility Criteria</h3>
+          <div class="age-row"><span style="font-weight:500;color:#1e293b;font-size:.88rem">Nursery</span><span class="age-badge">3 – 4 years</span></div>
+          <div class="age-row"><span style="font-weight:500;color:#1e293b;font-size:.88rem">LKG</span><span class="age-badge">4 – 5 years</span></div>
+          <div class="age-row"><span style="font-weight:500;color:#1e293b;font-size:.88rem">UKG</span><span class="age-badge">5 – 6 years</span></div>
+          <div class="age-row"><span style="font-weight:500;color:#1e293b;font-size:.88rem">Class I</span><span class="age-badge">6 – 7 years</span></div>
+          <div class="age-row"><span style="font-weight:500;color:#1e293b;font-size:.88rem">Class II onwards</span><span class="age-badge">As per CBSE norms</span></div>
+          <p style="font-size:.75rem;color:#94a3b8;margin-top:14px">Age is calculated as on 31st March of the academic year.</p>
+        </div>
+        <div class="docs-card">
+          <h3 class="serif" style="color:#0f2557;font-size:1.15rem;font-weight:700;margin-bottom:20px">Documents Required</h3>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Birth Certificate of the child</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Transfer Certificate (if applicable)</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Previous class Report Card</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Aadhar Card of child</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>4 recent passport-size photographs</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Residence proof of parents</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Medical fitness certificate</span></div>
+          <div class="doc-item"><span class="check-icon">✓</span><span>Caste certificate (if applicable)</span></div>
+          <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:14px">⬇ Download Admission Form</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="enquiry">
+    <div class="container" style="max-width:700px">
+      <div class="text-center" style="margin-bottom:36px"><span class="eyebrow">Get In Touch</span><h2 class="section-title serif">Admission Enquiry</h2><p class="section-subtitle">Fill in your details and our admissions team will contact you within 24 hours.</p></div>
+      <div class="enquiry-form fade-up">
+        <div class="form-row">
+          <div class="form-group"><label>Parent's Name</label><input type="text" placeholder="Your full name"></div>
+          <div class="form-group"><label>Child's Name</label><input type="text" placeholder="Child's full name"></div>
+          <div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="form-group"><label>Class Seeking Admission For</label><select><option>Nursery</option><option>LKG</option><option>UKG</option><option>Class I</option><option>Class II</option><option>Class III</option><option>Class IV</option><option>Class V</option><option>Class VI</option><option>Class VII</option><option>Class VIII</option></select></div>
+        <div class="form-group"><label>Message (Optional)</label><textarea rows="3" placeholder="Any specific queries..."></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:1rem">Submit Enquiry</button>
+        <p style="text-align:center;font-size:.76rem;color:#94a3b8;margin-top:10px">Your information is kept confidential and will only be used to process your enquiry.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ FACULTY PAGE ══════════ -->
+<div id="page-faculty" style="display:none">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=1400&q=80')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content"><h1>Our Faculty</h1><p>Meet the dedicated educators who inspire our students every single day.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto"><span class="eyebrow">The Heart of Brightpath</span><h2 class="section-title serif">People Who Make the Difference</h2><p class="section-subtitle">Our teachers are mentors, guides and cheerleaders — selected for academic expertise, passion and genuine love for children.</p></div>
+    </div>
+    <div class="container" style="margin-top:48px">
+      <div class="faculty-grid fade-up">
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="Mrs. Priya Sharma" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mrs. Priya Sharma</div><div class="faculty-role">Principal</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>M.Ed, B.Ed — DU</span></div><div class="faculty-meta-row">🕒 <span>22 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Mr. Rajesh Verma" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mr. Rajesh Verma</div><div class="faculty-role">Head of Academics</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>M.Sc Mathematics — IIT</span></div><div class="faculty-meta-row">🕒 <span>18 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Mrs. Ananya Gupta" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mrs. Ananya Gupta</div><div class="faculty-role">English &amp; Literature</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>MA English — JNU</span></div><div class="faculty-meta-row">🕒 <span>14 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Mr. Suresh Nair" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mr. Suresh Nair</div><div class="faculty-role">Science Faculty</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>M.Sc Physics — DU</span></div><div class="faculty-meta-row">🕒 <span>12 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400&q=80" alt="Mrs. Kavita Mehta" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mrs. Kavita Mehta</div><div class="faculty-role">Social Studies</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>MA History — AMU</span></div><div class="faculty-meta-row">🕒 <span>10 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Mr. Arun Kumar" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mr. Arun Kumar</div><div class="faculty-role">Physical Education</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>B.P.Ed — SAI</span></div><div class="faculty-meta-row">🕒 <span>8 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Mrs. Deepa Pillai" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mrs. Deepa Pillai</div><div class="faculty-role">Arts &amp; Crafts</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>BFA Fine Arts — NSD</span></div><div class="faculty-meta-row">🕒 <span>9 Years Experience</span></div></div></div></div>
+        <div class="faculty-card"><div class="faculty-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" alt="Mr. Mohit Singh" loading="lazy"></div><div class="faculty-info"><div class="faculty-name">Mr. Mohit Singh</div><div class="faculty-role">Computer Science</div><div class="faculty-meta"><div class="faculty-meta-row">🏆 <span>MCA — IGNOU</span></div><div class="faculty-meta-row">🕒 <span>7 Years Experience</span></div></div></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="container text-center">
+      <span class="eyebrow eyebrow-light">Join Our Team</span>
+      <h2 class="section-title serif section-title-light" style="margin-bottom:14px">Are You a Passionate Educator?</h2>
+      <p class="section-subtitle-light" style="max-width:520px;margin:0 auto 28px;line-height:1.8">We are always looking for talented, motivated teachers who share our vision of transformative education. If you'd like to be part of the Brightpath family, we'd love to hear from you.</p>
+      <a href="mailto:careers@brightpathacademy.edu.in" class="btn btn-white">✉ Send Your CV</a>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ CONTACT PAGE ══════════ -->
+<div id="page-contact" style="display:none">
+  <div class="page-hero">
+    <div class="container page-hero-content"><h1>Contact Us</h1><p>We'd love to hear from you. Reach out with any questions or enquiries.</p><div class="page-hero-divider"></div></div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="contact-cards">
+        <a href="tel:+919876543210" class="contact-card"><div class="contact-icon">📞</div><p style="font-weight:600;color:#0f2557;font-family:'Playfair Display',serif;margin-bottom:4px">Call Us</p><p style="font-size:.88rem;color:#374151">+91 98765 43210</p><p style="font-size:.8rem;color:#94a3b8">Mon–Sat, 8 AM – 4 PM</p></a>
+        <a href="mailto:info@brightpathacademy.edu.in" class="contact-card"><div class="contact-icon">✉</div><p style="font-weight:600;color:#0f2557;font-family:'Playfair Display',serif;margin-bottom:4px">Email Us</p><p style="font-size:.88rem;color:#374151">info@brightpathacademy.edu.in</p><p style="font-size:.8rem;color:#94a3b8">We reply within 24 hours</p></a>
+        <div class="contact-card"><div class="contact-icon">📍</div><p style="font-weight:600;color:#0f2557;font-family:'Playfair Display',serif;margin-bottom:4px">Visit Us</p><p style="font-size:.88rem;color:#374151;line-height:1.5">12, Vidya Nagar, Sector 7,<br>New Delhi — 110034</p></div>
+        <div class="contact-card"><div class="contact-icon">🕒</div><p style="font-weight:600;color:#0f2557;font-family:'Playfair Display',serif;margin-bottom:4px">School Hours</p><p style="font-size:.88rem;color:#374151">Mon–Sat: 8:00 AM – 2:30 PM</p><p style="font-size:.8rem;color:#94a3b8">Office: 8 AM – 4 PM</p></div>
+      </div>
+      <div class="contact-form-grid fade-up">
+        <div class="card" style="padding:40px;border:1px solid #f1f5f9">
+          <h3 class="serif" style="font-size:1.15rem;font-weight:700;color:#0f2557;margin-bottom:24px;display:flex;align-items:center;gap:10px"><span>💬</span> Send a Message</h3>
+          <div class="form-row" style="margin-bottom:16px">
+            <div class="form-group" style="margin:0"><label>Your Name</label><input type="text" placeholder="Full name"></div>
+            <div class="form-group" style="margin:0"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+          <div class="form-group"><label>Subject</label><input type="text" placeholder="What is this about?"></div>
+          <div class="form-group"><label>Your Message</label><textarea rows="4" placeholder="Write your message here..."></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:1rem">Send Message</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="map-card">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14006.985!2d77.1950!3d28.6150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0x3a6e34c11a8d6a31!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="280" style="border:0;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="School location"></iframe>
+          </div>
+          <div class="card" style="padding:22px;border:1px solid #f1f5f9">
+            <div style="display:flex;gap:12px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0">📍</span><div><p style="font-weight:600;color:#0f2557;font-size:.95rem;margin-bottom:4px">Brightpath Academy</p><p style="color:#64748b;font-size:.85rem;line-height:1.6">12, Vidya Nagar, Sector 7, New Delhi — 110034</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-logo" onclick="showPage('home',null);return false">
+          <div class="footer-logo-icon">🎓</div>
+          <div class="footer-logo-name">Brightpath Academy</div>
+        </a>
+        <p class="footer-desc">Nurturing young minds from Nursery to Class VIII with quality education, strong values and holistic development since 2018.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶</a>
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showPage('home',null);return false">→ Home</a></li>
+          <li><a href="#" onclick="showPage('about',null);return false">→ About Us</a></li>
+          <li><a href="#" onclick="showPage('infrastructure',null);return false">→ Infrastructure</a></li>
+          <li><a href="#" onclick="showPage('academics',null);return false">→ Academics</a></li>
+          <li><a href="#" onclick="showPage('gallery',null);return false">→ Gallery</a></li>
+          <li><a href="#" onclick="showPage('admissions',null);return false">→ Admissions</a></li>
+          <li><a href="#" onclick="showPage('faculty',null);return false">→ Faculty</a></li>
+          <li><a href="#" onclick="showPage('contact',null);return false">→ Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-heading">Contact Us</h3>
+        <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>12, Vidya Nagar, Sector 7, New Delhi — 110034</span></div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><a href="tel:+919876543210" style="color:#64748b;text-decoration:none">+91 98765 43210</a></div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">✉</span><a href="mailto:info@brightpathacademy.edu.in" style="color:#64748b;text-decoration:none;word-break:break-all">info@brightpathacademy.edu.in</a></div>
+        <div class="footer-contact-item"><span class="footer-contact-icon">🕒</span><span>Mon–Sat: 8:00 AM – 2:30 PM</span></div>
+      </div>
+      <div>
+        <h3 class="footer-heading">Find Us</h3>
+        <div class="footer-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14006.985!2d77.1950!3d28.6150!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37b741d057%3A0x3a6e34c11a8d6a31!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="160" style="border:0;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Brightpath Academy. All rights reserved.</p>
+      <p>Designed with ♥ for education</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Page switching ──
+let currentPage = 'home';
+
+function showPage(name, clickedEl) {
+  document.querySelectorAll('[id^="page-"]').forEach(p => p.style.display = 'none');
+  const pg = document.getElementById('page-' + name);
+  if (pg) { pg.style.display = 'block'; currentPage = name; }
+  document.querySelectorAll('.nav-link,.mobile-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll(`[data-page="${name}"]`).forEach(l => l.classList.add('active'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  revealOnScroll();
+  if (name === 'home') animateStats();
+  if (name === 'gallery') setupGalleryClicks();
+}
+
+// ── Hamburger ──
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  const h = document.getElementById('hamburger');
+  const open = m.classList.toggle('open');
+  h.textContent = open ? '✕' : '☰';
+}
+
+// ── Sticky navbar shadow ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  revealOnScroll();
+}, { passive: true });
+
+// ── Scroll reveal ──
+function revealOnScroll() {
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.88) el.classList.add('visible');
+  });
+}
+setTimeout(revealOnScroll, 100);
+window.addEventListener('scroll', revealOnScroll, { passive: true });
+window.addEventListener('resize', revealOnScroll, { passive: true });
+window.addEventListener('orientationchange', () => setTimeout(revealOnScroll, 150));
+
+// ── Stats counter ──
+function animateStats() {
+  const targets = [{ el:'stat0', val:400, suffix:'+' },{ el:'stat1', val:35, suffix:'+' },{ el:'stat2', val:18, suffix:'' },{ el:'stat3', val:98, suffix:'%' }];
+  targets.forEach(({ el, val, suffix }) => {
+    const node = document.getElementById(el);
+    if (!node) return;
+    let current = 0;
+    const step = val / 60;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, val);
+      node.textContent = Math.floor(current) + suffix;
+      if (current >= val) { node.textContent = val + suffix; clearInterval(timer); }
+    }, 22);
+  });
+}
+// Auto-run stats if home is showing
+setTimeout(() => { if (currentPage === 'home') animateStats(); }, 800);
+
+// ── Gallery filter ──
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.gallery-full-item').forEach(item => {
+    const match = cat === 'all' || item.dataset.cat === cat;
+    item.style.display = match ? 'block' : 'none';
+  });
+}
+
+// ── Gallery lightbox ──
+function setupGalleryClicks() {
+  document.querySelectorAll('.gallery-full-item').forEach(item => {
+    item.onclick = () => {
+      const img = item.querySelector('img');
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = img.src.replace('w=600', 'w=1200');
+      lb.style.display = 'flex';
+    };
+  });
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
